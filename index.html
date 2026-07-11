@@ -3,34 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Monetize</title>
+    <title>Monetize Pro</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3602312661900875" crossorigin="anonymous"></script>
     <style>
-        :root { --grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0f0c29; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .card { background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 300px; }
-        h1 { margin-bottom: 20px; font-weight: 300; }
-        .balance { font-size: 2rem; margin: 20px 0; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        button { background: var(--grad); border: none; padding: 12px 25px; color: white; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(118, 75, 162, 0.5); }
+        :root { --accent: #764ba2; --bg: #0f0c29; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .container { background: rgba(255, 255, 255, 0.03); padding: 2.5rem; border-radius: 40px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 90%; max-width: 450px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        h1 { font-weight: 300; letter-spacing: 2px; }
+        .balance { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1rem 0; }
+        .progress-bg { background: #1a1a3a; height: 10px; border-radius: 5px; margin: 20px 0; overflow: hidden; }
+        #bar { height: 100%; width: 0%; background: var(--accent); transition: 0.5s; }
+        .btn { background: linear-gradient(135deg, #667eea, #764ba2); border: none; padding: 15px 30px; color: white; border-radius: 20px; font-size: 1rem; cursor: pointer; transition: 0.4s; width: 100%; font-weight: 600; }
+        .btn:active { transform: scale(0.95); }
+        #toast { position: fixed; bottom: 20px; background: #333; padding: 10px 20px; border-radius: 10px; opacity: 0; transition: 0.5s; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Seus Ganhos</h1>
+
+    <div class="container">
+        <h1>Saldo Disponível</h1>
         <div class="balance" id="ganhos">R$ 0,00</div>
-        <button id="btnAnuncio">Assistir Anúncio</button>
+        
+        <div class="progress-bg">
+            <div id="bar"></div>
+        </div>
+        <p id="status">Meta diária: 20%</p>
+
+        <button class="btn" onclick="adAction()">ASSISTIR ANÚNCIO (+R$ 0.10)</button>
     </div>
+
+    <div id="toast">Saldo atualizado!</div>
+
     <script>
-        let saldo = 0;
-        document.getElementById('btnAnuncio').addEventListener('click', () => {
-            alert("Aqui você implementaria o código do SDK do seu anúncio.");
-            // Exemplo de como salvar no navegador
+        let saldo = parseFloat(localStorage.getItem('userSaldo')) || 0;
+        const display = document.getElementById('ganhos');
+        const bar = document.getElementById('bar');
+
+        function updateUI() {
+            display.innerText = `R$ ${saldo.toFixed(2)}`;
+            let progress = (saldo % 5) * 20; // Simula uma barra de progresso
+            bar.style.width = progress + "%";
+        }
+
+        function adAction() {
+            // Aqui entra a lógica de exibir o anúncio real
             saldo += 0.10;
-            document.getElementById('ganhos').innerText = `R$ ${saldo.toFixed(2)}`;
-            localStorage.setItem('meuSaldo', saldo);
-        });
-        // Recuperar salvo
-        window.onload = () => { saldo = parseFloat(localStorage.getItem('meuSaldo')) || 0; document.getElementById('ganhos').innerText = `R$ ${saldo.toFixed(2)}`; }
+            localStorage.setItem('userSaldo', saldo);
+            updateUI();
+            
+            // Feedback visual
+            const t = document.getElementById('toast');
+            t.style.opacity = 1;
+            setTimeout(() => t.style.opacity = 0, 2000);
+        }
+
+        updateUI();
     </script>
 </body>
 </html>
