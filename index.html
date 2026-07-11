@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monetize</title>
+    <style>
+        :root { --grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #0f0c29; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 300px; }
+        h1 { margin-bottom: 20px; font-weight: 300; }
+        .balance { font-size: 2rem; margin: 20px 0; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        button { background: var(--grad); border: none; padding: 12px 25px; color: white; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(118, 75, 162, 0.5); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Seus Ganhos</h1>
+        <div class="balance" id="ganhos">R$ 0,00</div>
+        <button id="btnAnuncio">Assistir Anúncio</button>
+    </div>
+    <script>
+        let saldo = 0;
+        document.getElementById('btnAnuncio').addEventListener('click', () => {
+            alert("Aqui você implementaria o código do SDK do seu anúncio.");
+            // Exemplo de como salvar no navegador
+            saldo += 0.10;
+            document.getElementById('ganhos').innerText = `R$ ${saldo.toFixed(2)}`;
+            localStorage.setItem('meuSaldo', saldo);
+        });
+        // Recuperar salvo
+        window.onload = () => { saldo = parseFloat(localStorage.getItem('meuSaldo')) || 0; document.getElementById('ganhos').innerText = `R$ ${saldo.toFixed(2)}`; }
+    </script>
+</body>
+</html>
