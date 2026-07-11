@@ -2,62 +2,36 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monetize Pro</title>
+    <title>Tech Insights & Notícias</title>
+    <!-- Script AdSense (Apenas carregue, não force o clique) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3602312661900875" crossorigin="anonymous"></script>
     <style>
-        :root { --accent: #764ba2; --bg: #0f0c29; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        .container { background: rgba(255, 255, 255, 0.03); padding: 2.5rem; border-radius: 40px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 90%; max-width: 450px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        h1 { font-weight: 300; letter-spacing: 2px; }
-        .balance { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1rem 0; }
-        .progress-bg { background: #1a1a3a; height: 10px; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        #bar { height: 100%; width: 0%; background: var(--accent); transition: 0.5s; }
-        .btn { background: linear-gradient(135deg, #667eea, #764ba2); border: none; padding: 15px 30px; color: white; border-radius: 20px; font-size: 1rem; cursor: pointer; transition: 0.4s; width: 100%; font-weight: 600; }
-        .btn:active { transform: scale(0.95); }
-        #toast { position: fixed; bottom: 20px; background: #333; padding: 10px 20px; border-radius: 10px; opacity: 0; transition: 0.5s; }
+        body { font-family: sans-serif; background: #0f0c29; color: white; padding: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; }
+        h1 { color: #667eea; }
+        .ad-container { margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 10px; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Saldo Disponível</h1>
-        <div class="balance" id="ganhos">R$ 0,00</div>
+        <h1>Bem-vindo ao Tech Insights</h1>
+        <p>Aqui você encontra as últimas novidades sobre automação, scripts e tecnologia.</p>
         
-        <div class="progress-bg">
-            <div id="bar"></div>
+        <article>
+            <h2>Como otimizar seu sistema Linux</h2>
+            <p>Manter o sistema atualizado e gerenciar pacotes corretamente é essencial para a estabilidade...</p>
+        </article>
+
+        <!-- Espaço reservado para o anúncio (AdSense fará o trabalho sozinho) -->
+        <div class="ad-container">
+            <p style="font-size: 0.8rem; color: #888;">Conteúdo Patrocinado</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3602312661900875"
+                 data-ad-slot="YOUR_AD_SLOT"
+                 data-ad-format="auto"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-        <p id="status">Meta diária: 20%</p>
-
-        <button class="btn" onclick="adAction()">ASSISTIR ANÚNCIO (+R$ 0.10)</button>
     </div>
-
-    <div id="toast">Saldo atualizado!</div>
-
-    <script>
-        let saldo = parseFloat(localStorage.getItem('userSaldo')) || 0;
-        const display = document.getElementById('ganhos');
-        const bar = document.getElementById('bar');
-
-        function updateUI() {
-            display.innerText = `R$ ${saldo.toFixed(2)}`;
-            let progress = (saldo % 5) * 20; // Simula uma barra de progresso
-            bar.style.width = progress + "%";
-        }
-
-        function adAction() {
-            // Aqui entra a lógica de exibir o anúncio real
-            saldo += 0.10;
-            localStorage.setItem('userSaldo', saldo);
-            updateUI();
-            
-            // Feedback visual
-            const t = document.getElementById('toast');
-            t.style.opacity = 1;
-            setTimeout(() => t.style.opacity = 0, 2000);
-        }
-
-        updateUI();
-    </script>
 </body>
 </html>
