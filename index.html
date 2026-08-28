@@ -1,37 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Tech Insights & Notícias</title>
-    <!-- Script AdSense (Apenas carregue, não force o clique) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3602312661900875" crossorigin="anonymous"></script>
-    <style>
-        body { font-family: sans-serif; background: #0f0c29; color: white; padding: 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; }
-        h1 { color: #667eea; }
-        .ad-container { margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinheiro Five</title>
+
+  <!-- ======================================================
+       VERIFICAÇÃO DO SITE NO PROPELLERADS
+       (se ainda usar meta tag em vez do arquivo, cole aqui)
+  ====================================================== -->
+  <!-- <meta name="propeller-site-verification" content="COLE_AQUI_SE_FOR_META_TAG"> -->
+
+  <!-- ======================================================
+       TAG DO PROPELLERADS (Onclick/Popunder — zona 274200)
+       Controlada pelo painel admin via localStorage:
+       se "pa_onclick_enabled" = "false", a tag não carrega.
+  ====================================================== -->
+  <script>
+    (function () {
+      var enabled = localStorage.getItem('pa_onclick_enabled');
+      if (enabled === null || enabled === 'true') {
+        var s = document.createElement('script');
+        s.src = 'https://quge5.com/88/tag.min.js';
+        s.async = true;
+        s.setAttribute('data-zone', '274200');
+        s.setAttribute('data-cfasync', 'false');
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+    header {
+      padding: 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header h1 { font-size: 1.6rem; color: #22c55e; }
+    header a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    header a:hover { border-color: #22c55e; color: #22c55e; }
+    main { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .card h2 { color: #38bdf8; margin-bottom: 12px; font-size: 1.2rem; }
+    .ad-slot {
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111827;
+      border: 1px dashed #334155;
+      border-radius: 8px;
+      color: #64748b;
+      font-size: 0.9rem;
+      margin: 24px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bem-vindo ao Tech Insights</h1>
-        <p>Aqui você encontra as últimas novidades sobre automação, scripts e tecnologia.</p>
-        
-        <article>
-            <h2>Como otimizar seu sistema Linux</h2>
-            <p>Manter o sistema atualizado e gerenciar pacotes corretamente é essencial para a estabilidade...</p>
-        </article>
 
-        <!-- Espaço reservado para o anúncio (AdSense fará o trabalho sozinho) -->
-        <div class="ad-container">
-            <p style="font-size: 0.8rem; color: #888;">Conteúdo Patrocinado</p>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-3602312661900875"
-                 data-ad-slot="YOUR_AD_SLOT"
-                 data-ad-format="auto"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+  <header>
+    <h1>💰 Dinheiro Five</h1>
+    <a href="/admin.html">Admin</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Bem-vindo</h2>
+      <p>Conteúdo principal do site.</p>
     </div>
+
+    <div class="ad-slot" id="ad-slot-topo">Espaço reservado para anúncio (topo)</div>
+
+    <div class="card">
+      <h2>Sobre o projeto</h2>
+      <p>Descreva aqui artigos, dicas, reviews, etc.</p>
+    </div>
+
+    <div class="ad-slot" id="ad-slot-meio">Espaço reservado para anúncio (meio)</div>
+  </main>
+
+  <footer>&copy; 2026 Dinheiro Five. Todos os direitos reservados.</footer>
+
 </body>
 </html>
